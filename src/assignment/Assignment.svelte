@@ -12,7 +12,8 @@
     let hello = 'world'
 
 
-    function assign() {
+    function assign() {        
+        // let hello = 'world'
         name = 'Heropy'
         //fruits.push('Orange')
         // 위에 Push가 되도 화면은 변경이 안됨
