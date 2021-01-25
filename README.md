@@ -36,6 +36,11 @@
 - 대기 로직이 처리되고 화면이 갱신되어야 그 때 반응성구문($:)이 실행됨
 
 
+@ 요소 binding
+- querySelector나 querySelectorAll 을 통해 찾아하는방법은 전체 DOM을 한번 검색하기때문에 
+  성능적으로 요소에 바로 Binding(bind:this)하는게 더 좋다고함
+
+
 
 
 
