@@ -26,19 +26,19 @@
 <button on:click={searchMovies}>Search</button>
 
 {#await promise}
-	<p style="color: royalblue">Loading...</p>
+	<p style="color: royalblue; font-weight: bold;">Loading...</p>
 {:then data} 
 	{#if data.Error}	
-		<div>{data.Error}</div>		
+		<p style="color: red; font-weight: bold;">{data.Error}</p>		
 	{:else}
 		<ul>		
-			{#each data.Search as movie}
+			{#each data.Search || [] as movie}
 				<li>[{movie.Year}] {movie.Title}</li>			
 			{/each}
 		</ul>
 	{/if}
 {:catch error}
-	<p style="color: red;">{error.message}</p>
+	<p style="color: red; font-weight: bold;">{error.message}</p>
 {/await}
 
 <!--
