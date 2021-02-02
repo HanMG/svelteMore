@@ -51,4 +51,16 @@
 그런데 Svelte 같은 경우는 하나의 컴포넌트 내 최상위 요소가 여러개기 때문에 
 컴포넌트 = 최상위 요소가 성립하지 않아, 제약없이 Props 이름으로 지정할 수 있다고함.
 
+@ ContextAPI(getContext, setContext)
+props를 통해 자식에게 내려주는 데이터 이동이 아닌 setContext('변수명', 데이터)을 통해 데이터를 지정, getContext('변수명')을 통해 본인을 포함한 하위 컴포넌트에 데이터를 사용할 수 있는 방법. 현재 컴포넌트를 기준으로 부모이상의 상위컴포넌트나 같은 형제 컴포넌트는 사용 불가
 
+@ 모듈 상황(Module Context)
+<!--  <script context="module"> </script> -->
+최초로 import될때만 초기화됨, 해당 컴포넌트가 사용하는 전역변수를 설정할 수 있음
+반응성을 가지지 못함 === 데이터는 변경되지만 화면에 반영이 안됨
+
+
+@ $$props & $$restProps
+위에서 내려오는 모든 props데이터를 명시할 수 없으니깐 $$props와 $$restProps라는 내장객체로 처리가능
+$$props는 모든 props를 담고있고,
+$$restProps는 export let 변수 처럼 명시한 것을 제외한 props를 가지고 있다고함.
