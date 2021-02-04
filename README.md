@@ -64,3 +64,24 @@ props를 통해 자식에게 내려주는 데이터 이동이 아닌 setContext(
 위에서 내려오는 모든 props데이터를 명시할 수 없으니깐 $$props와 $$restProps라는 내장객체로 처리가능
 $$props는 모든 props를 담고있고,
 $$restProps는 export let 변수 처럼 명시한 것을 제외한 props를 가지고 있다고함.
+
+
+@ slot
+props 가 아닌 방식으로 Text를 아래에 내려줄 수 있는 방법으로 
+컴포넌트의 컨텐츠에 값을 입력하고
+<!-- <slot></slot> --> 을 하위 컴포넌트에서 사용하면됨
+슬롯 사이에 넣은 텍스트는 Default 로 사용됨
+
+slot에 name을 붙여 사용하는 방법으로 매칭시킬 수 도 있음.
+
+slot을 사용한 컴포넌트에서의 name 순서에 따라 배치됨.
+상위에서는 순서상관없이 name에 맞는 컨텐츠를 넣으면됨
+
+style은 slot을 사용하는 컴포넌트가 아닌 해당 컴포넌트를 사용하는 부모컴포넌트에
+적용해야함
+
+slot에도 props처럼 속성데이터를 넣을 수 있음. 
+ex) <slot name="email" doamin="@abc.com"></slot>
+주의) 그러나 name은 예약어라 다르게 사용할 수 없음
+
+
