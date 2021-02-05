@@ -67,11 +67,13 @@ $$restProps는 export let 변수 처럼 명시한 것을 제외한 props를 가�
 
 
 @ slot
+#slot1
 props 가 아닌 방식으로 Text를 아래에 내려줄 수 있는 방법으로 
 컴포넌트의 컨텐츠에 값을 입력하고
 <!-- <slot></slot> --> 을 하위 컴포넌트에서 사용하면됨
 슬롯 사이에 넣은 텍스트는 Default 로 사용됨
 
+#slot-2
 slot에 name을 붙여 사용하는 방법으로 매칭시킬 수 도 있음.
 
 slot을 사용한 컴포넌트에서의 name 순서에 따라 배치됨.
@@ -80,8 +82,14 @@ slot을 사용한 컴포넌트에서의 name 순서에 따라 배치됨.
 style은 slot을 사용하는 컴포넌트가 아닌 해당 컴포넌트를 사용하는 부모컴포넌트에
 적용해야함
 
+#slot-3
 slot에도 props처럼 속성데이터를 넣을 수 있음. 
 ex) <slot name="email" doamin="@abc.com"></slot>
 주의) 그러나 name은 예약어라 다르게 사용할 수 없음
 
+#slot-4
+내려받은 name slot을 다시 자식한테 보내기위해선 slot태그에 slot 속성을 넣어야함
+ex) <slot name="named" slot="named-child"></slot>
 
+#slot-5
+$$slots 이름을 가진 객체로 slot들 및 default 을 표시, 내용이 있으면 true 표시
