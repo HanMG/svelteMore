@@ -93,3 +93,34 @@ ex) <slot name="named" slot="named-child"></slot>
 
 #slot-5
 $$slots 이름을 가진 객체로 slot들 및 default 을 표시, 내용이 있으면 true 표시
+
+@ store & Writable = 쓰기가능스토어
+store의 writable은 set, update, subscribe라는 함수를 가지고 있음, 수동구독에 쓰임 
+ex)
+export let count = writable(초기값, () => {
+    // subscribe 마다 매번 실행되는게 아니라 한번실행됨
+    console.log('구독자가 1명 이상일 때')
+    // onDestory시 subscribe 해제
+    return () => {
+        console.log('count 구독자가 0명일 때...')
+    }
+})
+
+set은 정해진 값으로 교체, update는 값을 받아 수정, subscribe는 데이터를 추적하여 변경시 바로 적용
+
+.svelte 컴포넌트 내에서는 자동구독을 store 처럼 .js 같은다른 객체는 수동구독을 사용해야함
+
+@ store & Readable = 읽기 전용 스토어
+store의 readable은 subscribe만 있음, 값 수정 불가
+writable과 달리 readble의 두번째 인자에 set함수를 넣을 수 있는데 
+최초 구독시 데이터에서 원하는 값을 지우고 값 설정이 가능
+ex)
+export let user = readable(userData, (set) => {
+    console.log('user 구독자가 1명 이상일 때')
+    delete userData.token
+    set(userData)
+    return () => {
+        console.log('user 구독자가 0명일 때')
+    }
+})
+
