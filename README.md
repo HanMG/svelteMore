@@ -124,3 +124,24 @@ export let user = readable(userData, (set) => {
     }
 })
 
+
+@ store & derived = 계산된 스토어
+기존에 존재하는 writable, readable 변수를 기반으로 동작, subscribe만 있음, 읽기전용
+연결된 스토어들이 변경되면 매번 실행되고, 구독이 초기화되고 다시 구독함.
+derived(구독할변수, $구독할변수 return ..., 최초로 출력될 데이터 ) 
+주의) $는 스토어의 데이터를 취급한다는 뜻으로 .svelte 환경의 자동구독을 의미하는게 아님
+ex)
+export let double = derived(count, $count => $count * 2)
+
+// 두개 이상의 변수를 계산시 배열로
+export let total = derived([count, double], ([$count, $double]) => {
+    return $count + $double
+})
+
+// 매개변수부분에 readable과 같이 set 추가 가능
+export let total = derived([count, double], ([$count, $double], set) => {
+    set($count + $double)
+})
+
+@ store & get
+구독하지 않고 값을 가져오는 방법
