@@ -145,3 +145,14 @@ export let total = derived([count, double], ([$count, $double], set) => {
 
 @ store & get
 구독하지 않고 값을 가져오는 방법
+
+@ svelte-element & self
+svelte:self = 컴포넌트 재귀 호출
+꼭 break 할 수 있는 조건문이 있어야함 
+
+@ @ svelte-element & component
+동적 컴포넌트 랜더링
+<!-- 
+<svelte:component this = {props}>
+ -->
+ bind:this 가 아닌 this 임을 주의
