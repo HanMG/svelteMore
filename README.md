@@ -150,9 +150,37 @@ export let total = derived([count, double], ([$count, $double], set) => {
 svelte:self = 컴포넌트 재귀 호출
 꼭 break 할 수 있는 조건문이 있어야함 
 
-@ @ svelte-element & component
+@ svelte-element & component
 동적 컴포넌트 랜더링
 <!-- 
 <svelte:component this = {props}>
  -->
  bind:this 가 아닌 this 임을 주의
+
+
+@ svelte-element & window
+기본 window요소 사용, script 태그 안
+<!-- 
+window.addEventListener('keydown', event => {
+    key = event.key
+})
+-->
+
+svelte:window 사용, html 태그 안
+<!--
+<svelte:window on:keydown{e => key = e.key} />
+ -->
+
+읽기 속성
+inner는 viewport크기, outer는 브라우저 창의 크기
+bind:innerWidth, bind:innerHeight, bind:outerWidth, bind:outerHeight, bind:online
+쓰기 속성
+bind:scrollX, bind:scrollY
+
+@ svelte-element & head, body
+svelte:head : html에서 쓰이는 head의 역할과 같음( meta, link, script 등),
+              컴포넌트가 추가됐을때 head에 추가시켜줌(css경로는 public에)
+
+svelte:body : html에 쓰이는 body에 이벤트를 추가하여 사용하라고 만들어놓은듯? 
+              용도를 잘모르겠슴
+
