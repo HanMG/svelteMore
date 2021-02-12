@@ -184,3 +184,18 @@ svelte:head : html에서 쓰이는 head의 역할과 같음( meta, link, script 
 svelte:body : html에 쓰이는 body에 이벤트를 추가하여 사용하라고 만들어놓은듯? 
               용도를 잘모르겠슴
 
+@ svelte-options & immutable
+기존의 값과 새로운 값을 비교해서 변화하는 값만 적용, 가변성데이터(객체, 함수)를 변경할때 사용
+<!-- 
+    <svelte:options immutable />
+ -->
+ Props로 내려줄때 구조분해를 통하면 문자데이터만 내려줄수 있고, 
+ 문자데이터는 불변성데이터라 immutable이 필요없음
+
+@ svelte-options & accessors
+일반적으로 다른 컴포넌트에 있는 변수나 함수에 접근하지 못하지만
+bind:this로 연결하고, 해당 컴포넌트에 options의 accessors를 사용하여 접근 허가하고 
+props처럼 export를 선언하면 해당 컴포넌트의 변수나 함수는 접근이 가능해짐
+<!-- 
+    <svelte:options accessors />
+ -->
